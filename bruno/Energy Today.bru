@@ -1,0 +1,19 @@
+meta {
+  name: Energy Today
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/cm?cmnd=EnergyTotal
+  body: none
+  auth: inherit
+}
+
+params:query {
+  cmnd: EnergyTotal
+}
+
+settings {
+  encodeUrl: true
+}

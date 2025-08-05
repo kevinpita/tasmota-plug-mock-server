@@ -1,0 +1,19 @@
+meta {
+  name: Power On
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/cm?cmnd=Power On
+  body: none
+  auth: inherit
+}
+
+params:query {
+  cmnd: Power On
+}
+
+settings {
+  encodeUrl: true
+}

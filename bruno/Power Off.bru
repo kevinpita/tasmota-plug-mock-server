@@ -1,0 +1,19 @@
+meta {
+  name: Power Off
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/cm?cmnd=Power off
+  body: none
+  auth: inherit
+}
+
+params:query {
+  cmnd: Power off
+}
+
+settings {
+  encodeUrl: true
+}

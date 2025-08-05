@@ -1,0 +1,19 @@
+meta {
+  name: Power status
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/cm?cmnd=Power
+  body: none
+  auth: inherit
+}
+
+params:query {
+  cmnd: Power
+}
+
+settings {
+  encodeUrl: true
+}
