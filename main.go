@@ -44,6 +44,18 @@ func main() {
 	}
 }
 
+// EnergyData represents the energy consumption data.
+type EnergyData struct {
+	Total     float64 `json:"Total"`
+	Yesterday float64 `json:"Yesterday"`
+	Today     float64 `json:"Today"`
+}
+
+// EnergyTotalResponse represents the top-level structure of the energy total JSON response.
+type EnergyTotalResponse struct {
+	EnergyTotal EnergyData `json:"EnergyTotal"`
+}
+
 func (s *Server) handleCmnd(w http.ResponseWriter, r *http.Request) {
 	cmnd := strings.ToLower(r.URL.Query().Get("cmnd"))
 	switch cmnd {
@@ -61,11 +73,11 @@ func (s *Server) handleCmnd(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleEnergyTotal(w http.ResponseWriter) {
-	response := map[string]interface{}{
-		"EnergyTotal": map[string]interface{}{
-			"Total":     energyTotalTotal,
-			"Yesterday": energyTotalYesterday,
-			"Today":     energyTotalToday,
+	response := EnergyTotalResponse{
+		EnergyTotal: EnergyData{
+			Total:     energyTotalTotal,
+			Yesterday: energyTotalYesterday,
+			Today:     energyTotalToday,
 		},
 	}
 	w.Header().Set("Content-Type", "application/json")
