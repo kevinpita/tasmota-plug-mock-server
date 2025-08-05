@@ -186,4 +186,3 @@ linters:
 
     usetesting:
       os-temp-dir: true
-
