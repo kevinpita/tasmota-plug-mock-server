@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"strings"
 	"sync"
 	"time"
 )
@@ -44,15 +45,15 @@ func main() {
 }
 
 func (s *Server) handleCmnd(w http.ResponseWriter, r *http.Request) {
-	cmnd := r.URL.Query().Get("cmnd")
+	cmnd := strings.ToLower(r.URL.Query().Get("cmnd"))
 	switch cmnd {
-	case "EnergyTotal":
+	case "energytotal":
 		s.handleEnergyTotal(w)
-	case "Power On":
+	case "power on":
 		s.handlePowerOn(w)
-	case "Power Off":
+	case "power off":
 		s.handlePowerOff(w)
-	case "Power":
+	case "power":
 		s.handlePowerStatus(w)
 	default:
 		http.NotFound(w, r)
